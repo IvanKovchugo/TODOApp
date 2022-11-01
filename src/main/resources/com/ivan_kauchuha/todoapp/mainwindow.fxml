@@ -4,20 +4,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2" fx:controller="com.ivan_kauchuha.todoapp.Controller">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2"
+            fx:controller="com.ivan_kauchuha.todoapp.Controller">
     <top>
-        <MenuBar style="-fx-background-color: white">
-            <Menu text="File">
-                <items>
-                    <MenuItem onAction="#showNewItemDialog" text="New..." />
-                    <SeparatorMenuItem/>
-                    <MenuItem text="Exit" />
-                </items>
-            </Menu>
-        </MenuBar>
+        <VBox>
+            <MenuBar style="-fx-background-color: white">
+                <Menu text="File">
+                    <items>
+                        <MenuItem onAction="#showNewItemDialog" text="New..."/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar style="-fx-background-color: white">
+                <HBox>
+                    <Button text="New..." onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add a New Todo Item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <ToggleButton fx:id="filteredToggleButton" text="Today's Items" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Button Down: Show Today's items only. Button up: Show all Items"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
     </top>
     <left>
-        <ListView fx:id="todoListView">
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
 
         </ListView>
     </left>
@@ -27,12 +51,12 @@
             <HBox>
                 <Label style="-fx-background-color: white" text="Due: ">
                     <font>
-                        <Font name="Times New Roman bold" size="20" />
+                        <Font name="Times New Roman bold" size="20"/>
                     </font>
                 </Label>
                 <Label fx:id="deadlineLabel" style="-fx-background-color: white">
                     <font>
-                        <Font name="Times New Roman bold" size="20" />
+                        <Font name="Times New Roman bold" size="20"/>
                     </font>
                 </Label>
             </HBox>
