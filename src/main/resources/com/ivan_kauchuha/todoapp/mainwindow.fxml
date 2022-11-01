@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2" fx:controller="com.ivan_kauchuha.todoapp.Controller">
+    <top>
+        <MenuBar style="-fx-background-color: white">
+            <Menu text="File">
+                <items>
+                    <MenuItem onAction="#showNewItemDialog" text="New..." />
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" />
+                </items>
+            </Menu>
+        </MenuBar>
+    </top>
+    <left>
+        <ListView fx:id="todoListView">
+
+        </ListView>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetailsTextArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+            <HBox>
+                <Label style="-fx-background-color: white" text="Due: ">
+                    <font>
+                        <Font name="Times New Roman bold" size="20" />
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel" style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20" />
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
