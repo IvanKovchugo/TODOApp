@@ -121,6 +121,9 @@ public class Controller {
                             setText(todoItem.getShortDescription());
                             if (todoItem.getDeadline().isBefore(LocalDate.now().plusDays(1))) {
                                 setTextFill(Color.RED);
+                                if (todoItem.getDeadline().equals(LocalDate.now())) {
+                                    setTextFill(Color.GREEN);
+                                }
                             } else if (todoItem.getDeadline().equals(LocalDate.now().plusDays(1))) {
                                 setTextFill(Color.ORANGE);
                             }
